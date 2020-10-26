@@ -1,0 +1,21 @@
+name: AmongMiner
+version: 0.0.1
+author: Alexzvn
+main: dev.alexzvn.among.Miner
+
+depend: [ProtocolLib]
+
+commands:
+  amongminer:
+    alias: am
+    descriptions: Base command
+
+  join:
+    descriptions: join to game
+
+  leave:
+    descriptions: leave game
+
+permissions:
+  amongminer.admin:
+    description: Gives access to everything!
