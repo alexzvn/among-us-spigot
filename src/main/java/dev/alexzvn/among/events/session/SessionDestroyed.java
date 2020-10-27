@@ -1,20 +1,16 @@
-package dev.alexzvn.among.events;
+package dev.alexzvn.among.events.session;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import dev.alexzvn.among.contract.Session;
 
-public class SessionCreated extends Event {
-
+public class SessionDestroyed extends Event {
     private static final HandlerList HANDLERS = new HandlerList();
-
-    protected String id;
 
     protected Session session;
 
-    public SessionCreated(String id, Session session) {
-        this.id = id;
+    public SessionDestroyed(Session session) {
         this.session = session;
     }
 
@@ -23,8 +19,12 @@ public class SessionCreated extends Event {
         return HANDLERS;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS;
+    }
+
     public String getId() {
-        return id;
+        return session.getId();
     }
 
     public Session getSession() {
