@@ -2,6 +2,7 @@ package dev.alexzvn.among.contract;
 
 import java.util.List;
 
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
@@ -21,6 +22,8 @@ public interface Session {
     public boolean isOwner(Player player);
 
     public World getMap();
+
+    public Location getLobbyLocation();
 
     public String getId();
 
