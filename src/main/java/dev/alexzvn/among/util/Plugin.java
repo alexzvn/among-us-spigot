@@ -15,6 +15,10 @@ public class Plugin {
         plugin = amongMiner;
     }
 
+    public static JavaPlugin getPlugin() {
+        return plugin;
+    }
+
     public static FileConfiguration config() {
         return plugin.getConfig();
     }
