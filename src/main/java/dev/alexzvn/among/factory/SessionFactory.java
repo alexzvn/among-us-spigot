@@ -3,18 +3,18 @@ package dev.alexzvn.among.factory;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import dev.alexzvn.among.contract.Session;
-import dev.alexzvn.among.session.SessionManager;
-import dev.alexzvn.among.session.RoomSession;
+import dev.alexzvn.among.contract.game.RoomSession;
+import dev.alexzvn.among.game.session.Room;
+import dev.alexzvn.among.game.session.SessionManager;
 import dev.alexzvn.among.util.Util;
 import dev.alexzvn.among.util.WorldMap;
 
 public class SessionFactory {
-    public static Session create(World originMap, Player owner) {
+    public static RoomSession create(World originMap, Player owner) {
 
         String id = generateId();
 
-        Session session = new RoomSession(WorldMap.copy(originMap, id), owner, id);
+        RoomSession session = new Room(WorldMap.copy(originMap, id), owner, id);
 
         try {
             SessionManager.addSession(id, session);
