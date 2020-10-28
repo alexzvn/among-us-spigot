@@ -1,10 +1,10 @@
-package dev.alexzvn.among.session;
+package dev.alexzvn.among.game.session;
 
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import dev.alexzvn.among.contract.Session;
+import dev.alexzvn.among.contract.game.RoomSession;
 import dev.alexzvn.among.events.session.SessionCreated;
 import dev.alexzvn.among.events.session.SessionDestroyed;
 import dev.alexzvn.among.events.session.SessionPlayerJoined;
@@ -13,11 +13,11 @@ import dev.alexzvn.among.util.Plugin;
 
 public class SessionManager {
     
-    protected static HashMap<String, Session> listSession = new HashMap<String, Session>();
+    protected static HashMap<String, RoomSession> listSession = new HashMap<String, RoomSession>();
 
     protected static HashMap<String, String> listPlayerSession = new HashMap<String, String>();
 
-    public static void addSession(String id, Session session) throws Exception {
+    public static void addSession(String id, RoomSession session) throws Exception {
         if (hasSession(id)) {
             throw new Exception(
                 "Session manager already have id:".concat(id)
@@ -30,7 +30,7 @@ public class SessionManager {
     }
 
     public static void addPlayer(Player player, String sessionId) {
-        Session session = listSession.get(sessionId);
+        RoomSession session = listSession.get(sessionId);
 
         session.addPlayer(player);
 
@@ -39,8 +39,8 @@ public class SessionManager {
         Plugin.dispatchEvent(new SessionPlayerJoined(player, session));
     }
 
-    public static void disconnectPlayer(Player player, String sessionId) {
-        Session session = listSession.get(sessionId);
+    public static void disconnectPlayer(Player player) {
+        RoomSession session = getSessionByPlayer(player);
 
         session.kickPlayer(player);
 
@@ -50,7 +50,7 @@ public class SessionManager {
     }
 
     public static void destroy(String id) {
-        Session session = listSession.get(id);
+        RoomSession session = listSession.get(id);
 
         listSession.remove(id);
 
@@ -66,13 +66,18 @@ public class SessionManager {
 
         listSession.clear();
     }
+    public static RoomSession getSessionByPlayer(Player player) {
+        return listSession.get(
+            listPlayerSession.get(player.getName())
+        );
+    }
 
     /**
      * You should check hasSession() first before call this
      * @param id
      * @return session
      */
-    public static Session getSession(String id) {
+    public static RoomSession getSession(String id) {
         return listSession.get(id);
     }
 

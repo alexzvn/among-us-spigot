@@ -1,4 +1,4 @@
-package dev.alexzvn.among.session;
+package dev.alexzvn.among.game.session;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,10 +8,11 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import dev.alexzvn.among.contract.Session;
+import dev.alexzvn.among.contract.game.RoomSession;
+import dev.alexzvn.among.contract.game.GameSession;
 import dev.alexzvn.among.util.WorldMap;
 
-public class RoomSession implements Session {
+public class Room implements RoomSession {
 
     protected World world;
 
@@ -21,7 +22,7 @@ public class RoomSession implements Session {
 
     protected HashMap<String, Player> players = new HashMap<String, Player>();
 
-    public RoomSession(World map, Player owner, String id) {
+    public Room(World map, Player owner, String id) {
         this.world = map;
         this.id = id;
         this.setOwner(owner);
@@ -91,6 +92,25 @@ public class RoomSession implements Session {
 
     @Override
     public Location getLobbyLocation() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean isInGame() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void broadcast(String message) {
+        for (Player player : players.values()) {
+            player.sendMessage(message);
+        }
+    }
+
+    @Override
+    public GameSession getGameSession() {
         // TODO Auto-generated method stub
         return null;
     }
