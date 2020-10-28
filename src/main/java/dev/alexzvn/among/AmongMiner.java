@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import dev.alexzvn.among.commands.AmongMinerCommand;
 import dev.alexzvn.among.commands.Join;
 import dev.alexzvn.among.commands.Leave;
-import dev.alexzvn.among.session.SessionManager;
+import dev.alexzvn.among.game.session.SessionManager;
 import dev.alexzvn.among.util.Plugin;
 import dev.alexzvn.among.util.Util;
 
