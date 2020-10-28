@@ -1,15 +1,15 @@
 package dev.alexzvn.among.events.session;
 
 import org.bukkit.entity.Player;
+import dev.alexzvn.among.events.Event;
+import dev.alexzvn.among.contract.game.RoomSession;
 
-import dev.alexzvn.among.contract.Session;
-
-public class SessionPlayerJoined extends SessionEvent {
+public class SessionPlayerJoined extends Event {
     protected Player player;
 
-    protected Session session;
+    protected RoomSession session;
 
-    public SessionPlayerJoined(Player player, Session session) {
+    public SessionPlayerJoined(Player player, RoomSession session) {
         this.player = player;
         this.session = session;
     }
@@ -18,7 +18,7 @@ public class SessionPlayerJoined extends SessionEvent {
         return session.getId();
     }
 
-    public Session getSession() {
+    public RoomSession getSession() {
         return session;
     }
 

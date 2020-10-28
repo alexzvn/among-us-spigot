@@ -1,37 +1,25 @@
 package dev.alexzvn.among.events.session;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
-
-import dev.alexzvn.among.contract.Session;
+import dev.alexzvn.among.contract.game.RoomSession;
+import dev.alexzvn.among.events.Event;
 
 public class SessionCreated extends Event {
 
-    private static final HandlerList HANDLERS = new HandlerList();
-
     protected String id;
 
-    protected Session session;
+    protected RoomSession session;
 
-    public SessionCreated(String id, Session session) {
+    public SessionCreated(String id, RoomSession session) {
         this.id = id;
         this.session = session;
     }
 
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS;
-    }
-
-    public static HandlerList getHandlerList() {
-        return HANDLERS;
-    }
 
     public String getId() {
         return id;
     }
 
-    public Session getSession() {
+    public RoomSession getSession() {
         return session;
     }
 }

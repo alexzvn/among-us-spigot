@@ -1,33 +1,21 @@
 package dev.alexzvn.among.events.session;
 
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
-
-import dev.alexzvn.among.contract.Session;
+import dev.alexzvn.among.contract.game.RoomSession;
+import dev.alexzvn.among.events.Event;
 
 public class SessionDestroyed extends Event {
-    private static final HandlerList HANDLERS = new HandlerList();
 
-    protected Session session;
+    protected RoomSession session;
 
-    public SessionDestroyed(Session session) {
+    public SessionDestroyed(RoomSession session) {
         this.session = session;
-    }
-
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS;
-    }
-
-    public static HandlerList getHandlerList() {
-        return HANDLERS;
     }
 
     public String getId() {
         return session.getId();
     }
 
-    public Session getSession() {
+    public RoomSession getSession() {
         return session;
     }
 }
