@@ -18,7 +18,7 @@ public class Message {
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
-    public static void sentitle(Player player, String title, String subtitle) {
+    public static void sendTitle(Player player, String title, String subtitle) {
         sendTitle(player, title, subtitle, 0, 3, 1);
     }
 
