@@ -20,13 +20,12 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 public class WorldMap {
 
     public static void teleAsyncPlayerToLobby(Player player) {
-        Bukkit.getScheduler()
-            .runTaskAsynchronously(Plugin.getPlugin(), new Runnable(){
-                @Override
-                public void run() {
-                    telePlayerToLobby(player);
-                }
-            });
+        Plugin.runAsync(new Runnable() {
+            @Override
+            public void run() {
+                telePlayerToLobby(player);
+            }
+        });
     }
 
     public static void telePlayerToLobby(Player player) {
@@ -47,16 +46,9 @@ public class WorldMap {
     }
 
     public static void delete(World world) {
-
-        Bukkit.getScheduler().runTaskAsynchronously(Plugin.getPlugin(), new Runnable(){
-
-            @Override
-            public void run() {
-                if (unload(world)) {
-                    new File(Bukkit.getWorldContainer(), world.getName()).delete();
-                }
-            }
-        });
+        if (unload(world)) {
+            Util.deleteDir(new File(Bukkit.getWorldContainer(), world.getName()));
+        }
     }
 
     public static Location getLobbyLocation() {
