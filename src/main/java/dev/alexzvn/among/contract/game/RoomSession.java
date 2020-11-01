@@ -21,6 +21,8 @@ public interface RoomSession {
 
     public void kickPlayer(Player player);
 
+    public int countPlayers();
+
     public Player getOwner();
 
     public void setOwner(Player player);
