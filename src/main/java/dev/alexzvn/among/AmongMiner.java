@@ -11,6 +11,9 @@ import dev.alexzvn.among.commands.AmongMinerCommand;
 import dev.alexzvn.among.commands.Join;
 import dev.alexzvn.among.commands.Leave;
 import dev.alexzvn.among.game.session.SessionManager;
+import dev.alexzvn.among.listener.vanilla.*;
+import dev.alexzvn.among.listener.game.*;
+import dev.alexzvn.among.listener.game.chat.HandleCrewmateChated;
 import dev.alexzvn.among.util.Plugin;
 import dev.alexzvn.among.util.Util;
 
@@ -49,7 +52,15 @@ public class AmongMiner extends JavaPlugin {
 
     protected void registerListener() {
         Listener[] listeners = {
-            
+            //Vanilla event
+            new PlayerChatForward(),
+            new PlayerDisconnectForward(),
+
+            // Among event
+            new SendPlayerToLobby(),
+            new SendPlayerToSessionMap(),
+            new SendFirstTitleToCrewmate(),
+            new HandleCrewmateChated(),
         };
 
         for (Listener listener : listeners) {
