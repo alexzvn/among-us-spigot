@@ -1,5 +1,7 @@
 package dev.alexzvn.among.util;
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 
 public class Util {
@@ -10,5 +12,17 @@ public class Util {
 
     public static void writeInfoLog(String text) {
         Bukkit.getLogger().info(text);
+    }
+
+    public static void deleteDir(File dir) {
+        File[] files = dir.listFiles();
+
+        if(files != null) {
+            for (final File file : files) {
+                deleteDir(file);
+            }
+        }
+
+        dir.delete();
     }
 }
