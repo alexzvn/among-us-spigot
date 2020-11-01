@@ -18,9 +18,9 @@ public class SessionFactory {
 
         try {
             SessionManager.addSession(id, session);
+            SessionManager.addPlayer(owner, id);
         } catch (Exception e) {
             e.printStackTrace();
-            
         }
 
         return session;
