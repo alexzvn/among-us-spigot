@@ -3,6 +3,8 @@ version: 0.0.1
 author: Alexzvn
 main: dev.alexzvn.among.AmongMiner
 
+api-version: 1.16
+
 depend: [ProtocolLib]
 
 commands:
