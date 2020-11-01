@@ -26,4 +26,12 @@ public class Plugin {
     public static void dispatchEvent(Event event) {
         Bukkit.getPluginManager().callEvent(event);
     }
+
+    public static void runAsync(Runnable task) {
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, task);
+    }
+
+    public static void runDelay(Runnable task, long delay) {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, task, delay);
+    }
 }
