@@ -23,9 +23,9 @@ public class Create implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        SessionFactory.create(player.getWorld(), player);
-
         player.sendMessage(Message.buildMessage("Creating new session..."));
+
+        SessionFactory.create(player.getWorld(), player);
 
         return true;
     }
