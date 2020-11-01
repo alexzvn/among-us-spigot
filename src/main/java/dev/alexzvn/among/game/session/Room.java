@@ -31,8 +31,6 @@ public class Room implements RoomSession {
     @Override
     public void addPlayer(Player player) {
         players.put(player.getName(), player);
-
-        player.teleport(getLobbyLocation());
     }
 
     @Override
@@ -88,12 +86,12 @@ public class Room implements RoomSession {
         }
 
         WorldMap.delete(this.world);
+        this.world = null; // prevent to save world again?
     }
 
     @Override
     public Location getLobbyLocation() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.world.getSpawnLocation();
     }
 
     @Override
@@ -113,5 +111,10 @@ public class Room implements RoomSession {
     public GameSession getGameSession() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public int countPlayers() {
+        return players.size();
     }
 }
