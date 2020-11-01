@@ -44,9 +44,13 @@ public class SessionManager {
 
         session.kickPlayer(player);
 
+        Plugin.dispatchEvent(new SessionPlayerLeft(player, session));
+
         listPlayerSession.remove(player.getName());
 
-        Plugin.dispatchEvent(new SessionPlayerLeft(player, session));
+        if (session.countPlayers() == 0) {
+            session.destroy();
+        }
     }
 
     public static void destroy(String id) {
@@ -60,6 +64,10 @@ public class SessionManager {
     }
 
     public static void destroyAll() {
+        if (listPlayerSession == null || listPlayerSession.size() < 1) {
+            return;
+        }
+
         listSession.forEach(
             (id, session) -> { destroy(id); }
         );
